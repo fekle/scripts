@@ -13,16 +13,16 @@ fi
 if s device pc; then
   case "${1}" in
   single | default)
-    xrandr --output DP-0 --primary
-    nvidia-settings --assign CurrentMetaMode="DP-0: 3840x2160_120 @3840x2160 +3840+0 {ViewPortIn=3840x2160, ViewPortOut=3840x2160+0+0, ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"
+    xrandr --output DP-2 --primary
+    nvidia-settings --assign CurrentMetaMode="DP-2: 3840x2160_120 @3840x2160 +3840+0 {ViewPortIn=3840x2160, ViewPortOut=3840x2160+0+0, ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"
     ;;
   dual)
-    xrandr --output DP-0 --primary
-    nvidia-settings --assign CurrentMetaMode="DP-0: 3840x2160_120 @3840x2160 +3840+0 {ViewPortIn=3840x2160, ViewPortOut=3840x2160+0+0, ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}, DP-2: 3840x2160_60 @3840x2160 +0+0 {ViewPortIn=3840x2160, ViewPortOut=3840x2160+0+0, ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"
+    xrandr --output DP-2 --primary
+    nvidia-settings --assign CurrentMetaMode="DP-2: 3840x2160_120 @3840x2160 +3840+0 {ViewPortIn=3840x2160, ViewPortOut=3840x2160+0+0, ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}, DP-0: 3840x2160_60 @3840x2160 +0+0 {ViewPortIn=3840x2160, ViewPortOut=3840x2160+0+0, ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"
     ;;
   triple)
-    xrandr --output DP-0 --primary
-    nvidia-settings --assign CurrentMetaMode="DP-0: 3840x2160_120 @3840x2160 +3840+1440 {ViewPortIn=3840x2160, ViewPortOut=3840x2160+0+0, ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}, DP-2: 3840x2160_60 @3840x2160 +0+1440 {ViewPortIn=3840x2160, ViewPortOut=3840x2160+0+0, ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}, HDMI-0: 2560x1440_60 @2560x1440 +0+0 {ViewPortIn=2560x1440, ViewPortOut=2560x1440+0+0, ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"
+    xrandr --output DP-2 --primary
+    nvidia-settings --assign CurrentMetaMode="DP-2: 3840x2160_120 @3840x2160 +3840+1440 {ViewPortIn=3840x2160, ViewPortOut=3840x2160+0+0, ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}, DP-0: 3840x2160_60 @3840x2160 +0+1440 {ViewPortIn=3840x2160, ViewPortOut=3840x2160+0+0, ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}, HDMI-0: 2560x1440_60 @2560x1440 +0+0 {ViewPortIn=2560x1440, ViewPortOut=2560x1440+0+0, ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"
     ;;
   *)
     exit 1
