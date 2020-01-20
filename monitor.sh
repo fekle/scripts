@@ -52,9 +52,8 @@ elif s device felix-xps; then
     eDP1="--auto --mode 3840x2160 --rate 60 --pos 7680x0 --scale 0.5x0.5"
     ;;
   workold)
-    HDMI1="--auto --mode 2560x1440 --rate 60 --pos 0x0 --scale 1.5x1.5"
-    DP2="--auto --primary --mode 3840x2160 --rate 60 --pos 3840x0 --scale 1x1"
-    eDP1="--auto --mode 3840x2160 --rate 60 --pos 7680x0 --scale 0.7x0.7"
+    eDP1="--auto --primary --mode 3840x2160 --rate 60 --pos 0x0 --scale 1x1"
+    HDMI1="--auto --mode 1920x1080 --rate 60 --pos 3840x0 --scale 2x2"
     ;;
 
   kitchen)
@@ -99,11 +98,11 @@ elif s device felix-xps; then
   esac
 
   # apply xrandr config
-  xrandr --output eDP-1-1 ${eDP1} \
-    --output DP-1-1 ${DP1} \
-    --output DP-1-2 ${DP2} \
-    --output HDMI-1-1 ${HDMI1} \
-    --output HDMI-1-2 ${HDMI2}
+  xrandr --output eDP-1 ${eDP1} \
+    --output DP-1 ${DP1} \
+    --output DP-2 ${DP2} \
+    --output HDMI-1 ${HDMI1} \
+    --output HDMI-2 ${HDMI2}
 
 else
   exit 0
