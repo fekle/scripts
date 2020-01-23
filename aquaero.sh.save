@@ -1,12 +1,12 @@
-#!/usr/bin/env bash
+/usr/bin/env bash
 set -euf -o pipefail
 
 data=$(curl -Ls http://localhost:9500/status)
 
 printf "### aquaero fans ###\n"
 printf "%-16s: %-16s\n" "pumpSpeed" "$(jq '.fans[0].speed' <<<"${data}") rpm"
-printf "%-16s: %-16s\n" "topFanSpeed" "$(jq '.fans[1].speed' <<<"${data}") rpm"
-printf "%-16s: %-16s\n" "bottomFanSpeed" "$(jq '.fans[2].speed' <<<"${data}") rpm"
+printf "%-16s: %-16s\n" "bottomFanSpeed" "$(jq '.fans[1].speed' <<<"${data}") rpm"
+printf "%-16s: %-16s\n" "topFanSpeed" "$(jq '.fans[2].speed' <<<"${data}") rpm"
 printf "%-16s: %-16s\n" "frontFanSpeed" "$(jq '.fans[3].speed' <<<"${data}") rpm"
 
 printf "\n### aquaero temps ###\n"
