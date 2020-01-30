@@ -97,6 +97,10 @@ elif s device felix-xps; then
     ;;
   esac
 
+  # enable Nvidia PRIME
+  xrandr --setprovideroutputsource modesetting NVIDIA-0
+  xrandr --auto
+
   # apply xrandr config
   xrandr --output eDP-1 ${eDP1} \
     --output DP-1 ${DP1} \
