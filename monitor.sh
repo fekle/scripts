@@ -102,11 +102,11 @@ elif s device felix-xps; then
   xrandr --auto
 
   # apply xrandr config
-  xrandr --output eDP-1 ${eDP1} \
-    --output DP-1 ${DP1} \
-    --output DP-2 ${DP2} \
-    --output HDMI-1 ${HDMI1} \
-    --output HDMI-2 ${HDMI2}
+  xrandr --output eDP-1-1 ${eDP1} \
+    --output DP-1-1 ${DP1} \
+    --output DP-1-2 ${DP2} \
+    --output HDMI-1-1 ${HDMI1} \
+    --output HDMI-1-2 ${HDMI2}
 
 else
   exit 0
