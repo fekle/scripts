@@ -2,7 +2,7 @@
 set -euf -o pipefail
 
 if s device pc; then
-  exec watch -tcn0.1 s msensors
+  exec watch -tcn1 's aquaero; s msensors'
 else
-  exec watch -tcn0.1 sensors
+  exec watch -tcn1 sensors
 fi
