@@ -7,3 +7,5 @@ s sudoprompt "root permissions needed to update system packages"
 sudo apt update && sudo apt full-upgrade
 
 sudo snap refresh
+
+s fw
