@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 set -euf -o pipefail
 
 s hasdisplay || exit 0
@@ -11,6 +11,7 @@ fi
 
 # switch trough arg and set output configs
 if s device pc; then
+echo "pc???"
   case "${1}" in
   single | default)
     xrandr --output DP-2 --primary
@@ -99,10 +100,9 @@ elif s device felix-xps; then
 
   # enable Nvidia PRIME
   xrandr --setprovideroutputsource modesetting NVIDIA-0
-  xrandr --auto
 
   # apply xrandr config
-  xrandr --output eDP-1-1 ${eDP1} \
+  xrandr --auto --output eDP-1-1 ${eDP1} \
     --output DP-1-1 ${DP1} \
     --output DP-1-2 ${DP2} \
     --output HDMI-1-1 ${HDMI1} \
