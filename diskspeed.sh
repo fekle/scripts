@@ -25,9 +25,9 @@ fi
 trap "clean \"${1}\"" TERM INT HUP
 
 printf "\n=> testing write speed\n"
-dd if=/dev/zero of="${1}" oflag=direct iflag=fullblock bs=${2:-512} count=${3:-1953125} status=progress
+dd if=/dev/zero of="${1}" bs=${2:-512} count=${3:-1953125} status=progress
 
 printf "\n=> testing read speed\n"
-dd if="${1}" of=/dev/null iflag=direct bs=${2:-512} count=${3:-1953125} status=progress
+dd if="${1}" of=/dev/null bs=${2:-512} count=${3:-1953125} status=progress
 
 clean "${1}"
