@@ -3,15 +3,15 @@ set -euf -o pipefail
 
 data=$(curl -Ls http://localhost:9500/status)
 
-printf "### aquaero fans ###\n"
-printf "%-16s: %-16s\n" "pumpSpeed" "$(jq '.fans[0].speed' <<<"${data}") rpm"
-printf "%-16s: %-16s\n" "topFanSpeed" "$(jq '.fans[1].speed' <<<"${data}") rpm"
-printf "%-16s: %-16s\n" "bottomFanSpeed" "$(jq '.fans[2].speed' <<<"${data}") rpm"
-printf "%-16s: %-16s\n" "frontFanSpeed" "$(jq '.fans[3].speed' <<<"${data}") rpm"
+printf "=== Fan Speeds ===\n"
+printf "%-16s %-.0f rpm\n" "Pump" "$(jq '.fans[0].speed' <<<"${data}")"
+printf "%-16s %-.0f rpm\n" "Top Fans" "$(jq '.fans[1].speed' <<<"${data}")"
+printf "%-16s %-.0f rpm\n" "Bottom Fans" "$(jq '.fans[2].speed' <<<"${data}")"
+printf "%-16s %-.0f rpm\n" "Front Fans" "$(jq '.fans[3].speed' <<<"${data}")"
 
-printf "\n### aquaero temps ###\n"
-printf "%-16s: %-16s\n" "waterTemp" "$(jq '.temperatures.sensor[0].temp' <<<"${data}") °C"
-printf "%-16s: %-16s\n" "topRadTemp" "$(jq '.temperatures.sensor[1].temp' <<<"${data}") °C"
-printf "%-16s: %-16s\n" "bottomRadTemp" "$(jq '.temperatures.sensor[2].temp' <<<"${data}") °C"
-printf "%-16s: %-16s\n" "intakeAirTemp" "$(jq '.temperatures.sensor[3].temp' <<<"${data}") °C"
-printf "%-16s: %-16s\n" "exhaustAirTemp" "$(jq '.temperatures.sensor[4].temp' <<<"${data}") °C"
+printf "\n=== Temperatures ===\n"
+printf "%-16s %-.0f °C\n" "Water" "$(jq '.temperatures.sensor[0].temp' <<<"${data}")"
+printf "%-16s %-.0f °C\n" "Top Rad" "$(jq '.temperatures.sensor[1].temp' <<<"${data}")"
+printf "%-16s %-.0f °C\n" "Bottom Rad" "$(jq '.temperatures.sensor[2].temp' <<<"${data}")"
+printf "%-16s %-.0f °C\n" "Intake Air" "$(jq '.temperatures.sensor[3].temp' <<<"${data}")"
+printf "%-16s %-.0f °C\n" "Exhaust Air" "$(jq '.temperatures.sensor[4].temp' <<<"${data}")"

@@ -10,7 +10,7 @@ if [[ ! -f ${infile} ]]; then
   exit $()
 fi
 
-dd if="${infile}" of="${outfile}" ${options}
+sudo dd if="${infile}" of="${outfile}" ${options}
 
 echo "force sync ${outfile}"
 sync "${outfile}"
