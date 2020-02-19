@@ -11,7 +11,6 @@ fi
 
 # switch trough arg and set output configs
 if s device pc; then
-  echo "pc???"
   case "${1}" in
   single | default)
     xrandr --output DP-2 --primary
