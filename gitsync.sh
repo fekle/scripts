@@ -10,7 +10,7 @@ repos=(
   '~/.config/i3-custom'
   '~/.s'
   '~/.devmode'
-  '~/.config/alacritty',
+  '~/.config/alacritty'
   '~/.fonts'
 )
 
