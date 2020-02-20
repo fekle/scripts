@@ -14,23 +14,25 @@ repos=(
   '~/.fonts'
 )
 
-function pull() {
-  # search for path, including replacing ~ with $HOME
-  path=$(realpath "${1//\~/${HOME}}") || exit 1
-  echo "=> ${path}" || exit 1
-  cd "${path}" || exit 1
-
-  # pull and push
-  git pull --rebase || exit 1
-  git push
-  printf '\n'
-}
-
-for repo in "${repos[@]}"; do
+function gitsync_pull() {
   (
-    pull "${repo}"
+    set -euf
+
+    # search for path, including replacing ~ with $HOME
+    path=$(realpath "${1//\~/${HOME}}")
+    cd "${path}"
+
+    # pull and push
+    git add . && git diff-index --quiet HEAD && git pull && git push || { git add . && git commit -v && git pull && git push; }
   ) || (
-    echo "=> updating ${repo} failed"
+    echo "=> updating ${1} failed"
     exit 1
   )
+}
+export -f gitsync_pull
+
+for repo in "${repos[@]}"; do
+ gitsync_pull $repo
 done
+
+#parallel 'gitsync_pull {}' ::: ${repos[@]}
