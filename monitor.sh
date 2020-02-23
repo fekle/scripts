@@ -116,13 +116,13 @@ sleep .1
 
 # set color profile
 echo 'set color...'
-s color &>/dev/null || true
+#s color &>/dev/null || true
 
 # set wallpaper
 #feh --bg-scale ~/img/grey.png
-hsetroot -solid "#000000" || xsetroot -solid "#000000"
+#hsetroot -solid "#000000" || xsetroot -solid "#000000"
 
 sleep .1
 # set wallpaper
-echo 'restart i3...'
-i3-msg -- restart
+#echo 'restart i3...'
+#i3-msg -- restart
