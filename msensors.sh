@@ -36,6 +36,7 @@ printf "
 Motherboard 1    ${systemp} ${TEMP_UNIT}
 Motherboard 2    ${syscputemp} ${TEMP_UNIT}
 PECI             ${peci} ${TEMP_UNIT}
+
 CPU Package      ${cpu} ${TEMP_UNIT}
 CPU Core 1       ${cpu1} ${TEMP_UNIT}
 CPU Core 2       ${cpu2} ${TEMP_UNIT}
@@ -43,5 +44,6 @@ CPU Core 3       ${cpu3} ${TEMP_UNIT}
 CPU Core 4       ${cpu4} ${TEMP_UNIT}
 CPU Core 5       ${cpu5} ${TEMP_UNIT}
 CPU Core 6       ${cpu6} ${TEMP_UNIT}
+
 GPU              ${gpu} ${TEMP_UNIT}
 "
