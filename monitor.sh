@@ -11,23 +11,41 @@ fi
 
 # switch trough arg and set output configs
 if s device pc; then
+  DVID0="--off"
+  HDMI0="--off"
+  HDMI1="--off"
+  DP0="--off"
+  DP1="--off"
+  DP2="--off"
+  DP3="--off"
+
   case "${1}" in
   single | default)
-    xrandr --output DP-2 --primary
-    nvidia-settings --assign CurrentMetaMode="DP-2: 3840x2160_120 @3840x2160 +3840+0 {ViewPortIn=3840x2160, ViewPortOut=3840x2160+0+0, ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"
+    DP2="--auto --primary --mode 3840x2160 --pos 0x0 --scale 1x1 --rate 120"
     ;;
   dual)
-    xrandr --output DP-2 --primary
-    nvidia-settings --assign CurrentMetaMode="DP-2: 3840x2160_120 @3840x2160 +3840+0 {ViewPortIn=3840x2160, ViewPortOut=3840x2160+0+0, ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}, DP-0: 3840x2160_60 @3840x2160 +0+0 {ViewPortIn=3840x2160, ViewPortOut=3840x2160+0+0, ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"
+    DP0="--auto --mode 3840x2160 --pos 0x0 --scale 1x1 --rate 60"
+    DP2="--auto --primary --mode 3840x2160 --pos 3840x0 --scale 1x1 --rate 120"
     ;;
   triple)
-    xrandr --output DP-2 --primary
-    nvidia-settings --assign CurrentMetaMode="DP-2: 3840x2160_120 @3840x2160 +3840+1440 {ViewPortIn=3840x2160, ViewPortOut=3840x2160+0+0, ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}, DP-0: 3840x2160_60 @3840x2160 +0+1440 {ViewPortIn=3840x2160, ViewPortOut=3840x2160+0+0, ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}, HDMI-0: 2560x1440_60 @2560x1440 +0+0 {ViewPortIn=2560x1440, ViewPortOut=2560x1440+0+0, ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"
+    HDMI0="--auto --mode 2560x1440 --pos 0x0 --scale 1x1 --rate 60"
+    DP0="--auto --mode 3840x2160 --pos 0x1440 --scale 1x1 --rate 60"
+    DP2="--auto --primary --mode 3840x2160 --pos 3840x1440 --scale 1x1 --rate 120"
     ;;
   *)
     exit 1
     ;;
   esac
+
+  xrandr --auto \
+    --output DVI-D-0 ${DVID0} \
+    --output HDMI-0 ${HDMI0} \
+    --output HDMI-1 ${HDMI1} \
+    --output DP-0 ${DP0} \
+    --output DP-1 ${DP1} \
+    --output DP-2 ${DP2} \
+    --output DP-3 ${DP3}
+
 elif s device felix-xps; then
   # everything off by default
   eDP1="--off"
@@ -101,7 +119,8 @@ elif s device felix-xps; then
   xrandr --setprovideroutputsource modesetting NVIDIA-0
 
   # apply xrandr config
-  xrandr --auto --output eDP-1-1 ${eDP1} \
+  xrandr --setprovideroutputsource modesetting NVIDIA-0 --auto \
+    --output eDP-1-1 ${eDP1} \
     --output DP-1-1 ${DP1} \
     --output DP-1-2 ${DP2} \
     --output HDMI-1-1 ${HDMI1} \
