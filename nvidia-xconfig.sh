@@ -12,6 +12,6 @@ fi
 
 sudo nvidia-xconfig -o "${output}" \
   --cool-bits=28 --color-space=RGB --color-range=FULL -d 24 \
-  --composite ${NV_PRIME} \
+  --no-flip --composite ${NV_PRIME} \
   --force-composition-pipeline=FORCE-COMPOSITION-PIPELINE \
   --force-full-composition-pipeline=FORCE-FULL-COMPOSITION-PIPELINE
