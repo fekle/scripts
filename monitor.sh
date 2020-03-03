@@ -11,41 +11,20 @@ fi
 
 # switch trough arg and set output configs
 if s device pc; then
-  DVID0="--off"
-  HDMI0="--off"
-  HDMI1="--off"
-  DP0="--off"
-  DP1="--off"
-  DP2="--off"
-  DP3="--off"
-
   case "${1}" in
-  single | default)
-    DP2="--auto --primary --mode 3840x2160 --pos 0x0 --scale 1x1 --rate 120"
+  single)
+    nvidia-settings --assign CurrentMetaMode="DP-2: 3840x2160_120 +0+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"
     ;;
-  dual)
-    DP0="--auto --mode 3840x2160 --pos 0x0 --scale 1x1 --rate 60"
-    DP2="--auto --primary --mode 3840x2160 --pos 3840x0 --scale 1x1 --rate 120"
+  dual | default)
+    nvidia-settings --assign CurrentMetaMode="DP-2: 3840x2160_120 +3840+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}, DP-0: 3840x2160_60 +0+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On, AllowGSYNCCompatible=On}"
     ;;
   triple)
-    HDMI0="--auto --mode 2560x1440 --pos 0x0 --scale 1x1 --rate 60"
-    DP0="--auto --mode 3840x2160 --pos 0x1440 --scale 1x1 --rate 60"
-    DP2="--auto --primary --mode 3840x2160 --pos 3840x1440 --scale 1x1 --rate 120"
+    nvidia-settings --assign CurrentMetaMode="DP-2: 3840x2160_120 +3840+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}, DP-0: 3840x2160_60 +0+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On, AllowGSYNCCompatible=On}"
     ;;
   *)
     exit 1
     ;;
   esac
-
-  xrandr --auto \
-    --output DVI-D-0 ${DVID0} \
-    --output HDMI-0 ${HDMI0} \
-    --output HDMI-1 ${HDMI1} \
-    --output DP-0 ${DP0} \
-    --output DP-1 ${DP1} \
-    --output DP-2 ${DP2} \
-    --output DP-3 ${DP3}
-
 elif s device felix-xps; then
   # everything off by default
   eDP1="--off"
