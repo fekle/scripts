@@ -11,6 +11,7 @@ fi
 
 # switch trough arg and set output configs
 if s device pc; then
+  xrandr --output DP-2 --primary
   case "${1}" in
   single)
     nvidia-settings --assign CurrentMetaMode="DP-2: 3840x2160_120 +0+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"
