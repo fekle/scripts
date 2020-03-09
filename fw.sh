@@ -1,5 +1,5 @@
 #!/bin/bash
 set -euf
 
-sudo fwupdmgr refresh
+sudo fwupdmgr refresh --force
 sudo fwupdmgr update
